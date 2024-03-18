@@ -1,0 +1,28 @@
+<div class="control-section">
+  <div class="col-lg-9 content-wrapper">
+    <ejs-schedule
+      #schedule
+      height="650px"
+      [(selectedDate)]="selectedDate"
+      [eventSettings]="eventSettings"
+      currentView="Week"
+      (popupOpen)="onPopupOpen($event)"
+      (actionComplete)="onActionComplete($event)"
+    >
+      <ng-template
+        #eventSettingsTemplate
+        let-data
+        matTooltip="Info about the action"
+      >
+        <div>
+          <div class="subject">{{ data.Subject }}</div>
+          <div class="time">
+            Time: {{ data.StartTime.toISOString() }} -
+            {{ data.EndTime.toISOString() }}
+          </div>
+          <div class="cal-event-description">{{ data.description }}</div>
+        </div>
+      </ng-template>
+    </ejs-schedule>
+  </div>
+</div>
